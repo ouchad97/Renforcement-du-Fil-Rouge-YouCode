@@ -1,78 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fil Rouge YouCode — Banque de Révision</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-<link rel="stylesheet" href="web/assets/css/app.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fil Rouge YouCode — Banque de Révision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="web/assets/css/app.css">
 </head>
+
 <body>
 
-<!-- Mobile Overlay -->
-<div id="overlay" class="overlay hidden"></div>
+  <!-- Mobile Overlay -->
+  <div id="overlay" class="overlay hidden"></div>
 
-<!-- SIDEBAR -->
-<aside id="sidebar" class="sidebar">
-  <div class="sidebar-header">
-    <div class="logo-wrap">
-      <div class="logo-icon">YC</div>
-      <div>
-        <div class="logo-title">Fil Rouge</div>
-        <div class="logo-sub">YouCode · Banque de Révision</div>
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-wrap">
+        <div class="logo-icon">YC</div>
+        <div>
+          <div class="logo-title">Fil Rouge</div>
+          <div class="logo-sub">YouCode · Banque de Révision</div>
+        </div>
+      </div>
+      <button id="close-btn" class="icon-btn mobile-only">✕</button>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="text" id="search-input" placeholder="🔍  Rechercher..." autocomplete="off">
+      <div id="search-results" class="search-dropdown hidden"></div>
+    </div>
+
+    <nav id="nav" class="sidebar-nav">
+      <!-- generated -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <div id="global-progress-wrap">
+        <div class="prog-label">
+          <span>Progression globale</span>
+          <span id="prog-pct">0%</span>
+        </div>
+        <div class="prog-bar-track">
+          <div id="prog-bar" class="prog-bar-fill" style="width:0%"></div>
+        </div>
+        <div id="badge-display" class="badge-novice">🌱 Novice</div>
+      </div>
+      <div style="font-size: 0.75rem; color: #888; text-align: center; margin-top: 1rem;">
+        © By Houssni Ouchad — Basé sur des ressources partagées en 2026
       </div>
     </div>
-    <button id="close-btn" class="icon-btn mobile-only">✕</button>
-  </div>
+  </aside>
 
-  <div class="sidebar-search">
-    <input type="text" id="search-input" placeholder="🔍  Rechercher..." autocomplete="off">
-    <div id="search-results" class="search-dropdown hidden"></div>
-  </div>
-
-  <nav id="nav" class="sidebar-nav">
-    <!-- generated -->
-  </nav>
-
-  <div class="sidebar-footer">
-    <div id="global-progress-wrap">
-      <div class="prog-label">
-        <span>Progression globale</span>
-        <span id="prog-pct">0%</span>
+  <!-- MAIN CONTENT -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button id="menu-btn" class="icon-btn">☰</button>
+        <div id="breadcrumb" class="breadcrumb">Accueil</div>
       </div>
-      <div class="prog-bar-track"><div id="prog-bar" class="prog-bar-fill" style="width:0%"></div></div>
-      <div id="badge-display" class="badge-novice">🌱 Novice</div>
-    </div>
-  </div>
-</aside>
-
-<!-- MAIN CONTENT -->
-<div class="main-wrap">
-  <header class="topbar">
-    <div class="topbar-left">
-      <button id="menu-btn" class="icon-btn">☰</button>
-      <div id="breadcrumb" class="breadcrumb">Accueil</div>
-    </div>
-    <div class="topbar-right">
-      <div id="mini-prog-wrap" class="mini-prog">
-        <div class="prog-bar-track mini"><div id="mini-bar" class="prog-bar-fill" style="width:0%"></div></div>
-        <span id="mini-pct">0%</span>
-        <span id="mini-badge" class="badge-pill">🌱 Novice</span>
+      <div class="topbar-right">
+        <div id="mini-prog-wrap" class="mini-prog">
+          <div class="prog-bar-track mini">
+            <div id="mini-bar" class="prog-bar-fill" style="width:0%"></div>
+          </div>
+          <span id="mini-pct">0%</span>
+          <span id="mini-badge" class="badge-pill">🌱 Novice</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main id="content" class="content-area">
-    <!-- home rendered on load -->
-  </main>
-</div>
+    <main id="content" class="content-area">
+      <!-- home rendered on load -->
+    </main>
+  </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="web/assets/js/content.js"></script>
-<script src="web/assets/js/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="web/assets/js/content.js"></script>
+  <script src="web/assets/js/app.js"></script>
 </body>
+
 </html>
